@@ -22,7 +22,62 @@ export default function LoginPopUp() {
   return (
     <div className="login popup">
       <span>Login</span>
-
+      <div className="avatar-slider">
+        <Swiper
+          centeredSlides={true}
+          loop={true}
+          spaceBetween={0}
+          effect="coverflow"
+          grabCursor={true}
+          slidesPerView="auto"
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          pagination={{
+            el: ".swiper-pagination",
+          }}
+        >
+          {colors.map((color) => {
+            return (
+              <SwiperSlide>
+                <SingleAvatar color={color} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+      <div className="avatar-slider">
+        <Swiper
+          centeredSlides={true}
+          loop={true}
+          spaceBetween={0}
+          effect="coverflow"
+          grabCursor={true}
+          slidesPerView="auto"
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          pagination={{
+            el: ".swiper-pagination",
+          }}
+        >
+          {colors.map((color) => {
+            return (
+              <SwiperSlide>
+                <SingleAvatar color={color} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
       <div className="username">
         <input type="text" required placeholder="Enter username" />
       </div>
