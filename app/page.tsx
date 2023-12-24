@@ -1,5 +1,4 @@
 "use client";
-
 import LoginPopUp from "./login/page";
 import NotesPage from "./notes/page";
 

@@ -1,18 +1,18 @@
-/* .background {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -10;
-  opacity: 0;
-} */
-/* adding the above style makes popup not work */
-
 .avatar-popup {
   position: fixed;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar-popup .show {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-popup::before {
@@ -23,6 +23,8 @@
   z-index: 100;
   opacity: 0;
   pointer-events: none;
+  top: 0;
+  left: 0;
 }
 .avatar-popup .show::before {
   opacity: 1;
@@ -159,5 +161,8 @@
 .color {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
 }
