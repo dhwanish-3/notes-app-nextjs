@@ -1,11 +1,16 @@
+"use client";
+import LoginPopUp from "./login/page";
 import NotesPage from "./notes/page";
 
 export default function Home() {
+  const handleClick = () => {
+    document.querySelector(".avatar-popup ")?.classList.add("show");
+  };
   return (
     <div>
       <NotesPage />
-      {/* <h1>Home Page</h1>
-      <p>Some content</p> */}
+      <button onClick={handleClick}>Popup</button>
+      <LoginPopUp />
     </div>
   );
 }
