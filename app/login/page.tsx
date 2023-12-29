@@ -6,7 +6,7 @@ import ArrowUp from "../../public/arrow-up.svg";
 import ArrowDown from "../../public/arrow-down.svg";
 import "swiper/css";
 import "./Login.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const colors = [
   "red",
@@ -31,9 +31,12 @@ const avatars = [
   ArrowDown,
   ArrowDown,
 ];
+
 export default function LoginPopUp() {
+  const [centreColor, setCentreColor] = useState("red");
+
   return (
-    <div className="avatar-popup">
+    <div className="avatar-popup show">
       <div className="login">
         <span>Login</span>
         <div className="avatar-picker">
@@ -60,7 +63,7 @@ export default function LoginPopUp() {
               {avatars.map((avatar, id) => {
                 return (
                   <SwiperSlide key={id}>
-                    <SingleAvatar image={avatar} />
+                    <SingleAvatar image={avatar} color={centreColor} />
                   </SwiperSlide>
                 );
               })}
@@ -88,7 +91,12 @@ export default function LoginPopUp() {
               {colors.map((color, id) => {
                 return (
                   <SwiperSlide key={id}>
-                    <SingleAvatar color={color} />
+                    {({ isActive }) => {
+                      if (isActive) {
+                        setCentreColor(color);
+                      }
+                      return <SingleAvatar color={color} />;
+                    }}
                   </SwiperSlide>
                 );
               })}
@@ -106,30 +114,6 @@ export default function LoginPopUp() {
 }
 
 function SingleAvatar({ color, image }: any) {
-  const [centreColor, setCentreColor] = useState(colors[1]);
-
-  useEffect(() => {
-    console.log("useEffect");
-    if (image) {
-      console.log("image");
-      const updateColor = () => {
-        console.log("updateColor");
-        let element = document.querySelector(".swiper-slide-active .color");
-        console.log(element);
-        if (element) {
-          let style = window.getComputedStyle(element);
-          let newColor = style.getPropertyValue("background-color");
-          setCentreColor(newColor);
-          console.log(centreColor);
-        }
-      };
-      document.addEventListener("DOMContentLoaded", updateColor);
-      return () => {
-        document.removeEventListener("DOMContentLoaded", updateColor);
-      };
-    }
-  }, []);
-
   if (color) {
     return (
       <div className="single-avatar">
@@ -137,10 +121,10 @@ function SingleAvatar({ color, image }: any) {
       </div>
     );
   }
-  if (image) {
+  if (image && color) {
     return (
       <div className="single-avatar">
-        <div className="color" style={{ backgroundColor: centreColor }}>
+        <div className="color" style={{ backgroundColor: color }}>
           <Image src={image} alt="img" />
         </div>
       </div>
