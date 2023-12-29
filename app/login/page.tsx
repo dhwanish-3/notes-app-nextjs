@@ -10,15 +10,15 @@ import { useState } from "react";
 
 const colors = [
   "red",
-  "green",
-  "blue",
-  "white",
-  "black",
+  "#00d507", // green
+  "#00d0ff", // blue
+  "transparent",
+  "#3e3d3e",
   "yellow",
-  "pink",
-  "purple",
+  "#ff00ff",
+  "#b900e3", // purple
   "orange",
-  "brown",
+  "#764235", // brown
   "gray",
 ];
 const avatars = [

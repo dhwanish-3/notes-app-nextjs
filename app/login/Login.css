@@ -1,18 +1,22 @@
 .avatar-popup {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 }
-.avatar-popup .show {
+.avatar-popup.show {
   position: fixed;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .avatar-popup::before {
@@ -20,16 +24,17 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 10;
   opacity: 0;
   pointer-events: none;
   top: 0;
   left: 0;
 }
-.avatar-popup .show::before {
+.avatar-popup.show::before {
   opacity: 1;
   pointer-events: auto;
 }
+
 .login {
   display: flex;
   flex-direction: column;
@@ -51,7 +56,7 @@
   padding: 0.8rem;
   gap: 0.5rem;
   color: #fff64a;
-  z-index: 100;
+  z-index: 1000;
   padding-bottom: 2rem;
   opacity: 0;
   pointer-events: none;
@@ -61,6 +66,7 @@
 }
 
 .avatar-popup.show .login {
+  z-index: 100;
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
