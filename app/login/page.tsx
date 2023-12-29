@@ -6,6 +6,7 @@ import ArrowUp from "../../public/arrow-up.svg";
 import ArrowDown from "../../public/arrow-down.svg";
 import "swiper/css";
 import "./Login.css";
+
 import { useState } from "react";
 import one from "../../public/images/one.png";
 import two from "../../public/images/two.png";
@@ -31,10 +32,12 @@ const colors = [
   "#764235", // brown
   "gray",
 ];
+
 const avatars = [one, two, three, four, five, six, seven, eight, nine, ten];
 
 export default function LoginPopUp() {
-  const [centreColor, setCentreColor] = useState("red");
+  const [centreColor, setCentreColor] = useState(colors[0]); // the selected color
+  const [selectedAvatar, setSelectedAvatar] = useState(avatars[0]); // the selected avatar
 
   return (
     <div className="avatar-popup show">
@@ -64,7 +67,14 @@ export default function LoginPopUp() {
               {avatars.map((avatar, id) => {
                 return (
                   <SwiperSlide key={id}>
-                    <SingleAvatar image={avatar} color={centreColor} />
+                    {({ isActive }) => {
+                      if (isActive) {
+                        setSelectedAvatar(avatar);
+                      }
+                      return (
+                        <SingleAvatar image={avatar} color={centreColor} />
+                      );
+                    }}
                   </SwiperSlide>
                 );
               })}
@@ -116,7 +126,6 @@ export default function LoginPopUp() {
 
 function SingleAvatar({ color, image }: any) {
   if (color && !image) {
-    console.log("color is " + color);
     return (
       <div className="single-avatar">
         <div className="color" style={{ backgroundColor: color }}></div>
@@ -124,7 +133,6 @@ function SingleAvatar({ color, image }: any) {
     );
   }
   if (image && color) {
-    console.log("image is " + image);
     return (
       <div className="single-avatar">
         <div className="color" style={{ backgroundColor: color }}>
