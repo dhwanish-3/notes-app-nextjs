@@ -157,11 +157,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1.5px solid #5140ce;
+  /* border: 1.5px solid #5140ce; */
 }
 
-.single-avatar img {
+.single-avatar .image {
   object-fit: cover;
+  width: 90%;
+  height: 90%;
 }
 
 .color {

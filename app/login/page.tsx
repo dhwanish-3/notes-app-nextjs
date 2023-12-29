@@ -7,30 +7,31 @@ import ArrowDown from "../../public/arrow-down.svg";
 import "swiper/css";
 import "./Login.css";
 import { useState } from "react";
+import one from "../../public/images/one.png";
+import two from "../../public/images/two.png";
+import three from "../../public/images/three.png";
+import four from "../../public/images/four.png";
+import five from "../../public/images/five.png";
+import six from "../../public/images/six.png";
+import seven from "../../public/images/seven.png";
+import eight from "../../public/images/eight.png";
+import nine from "../../public/images/nine.png";
+import ten from "../../public/images/ten.png";
 
 const colors = [
   "red",
   "#00d507", // green
   "#00d0ff", // blue
   "transparent",
-  "#3e3d3e",
+  "#3e3d3e", // black
   "yellow",
-  "#ff00ff",
+  "#ff00ff", // pink
   "#b900e3", // purple
   "orange",
   "#764235", // brown
   "gray",
 ];
-const avatars = [
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-  ArrowDown,
-];
+const avatars = [one, two, three, four, five, six, seven, eight, nine, ten];
 
 export default function LoginPopUp() {
   const [centreColor, setCentreColor] = useState("red");
@@ -114,7 +115,8 @@ export default function LoginPopUp() {
 }
 
 function SingleAvatar({ color, image }: any) {
-  if (color) {
+  if (color && !image) {
+    console.log("color is " + color);
     return (
       <div className="single-avatar">
         <div className="color" style={{ backgroundColor: color }}></div>
@@ -122,10 +124,11 @@ function SingleAvatar({ color, image }: any) {
     );
   }
   if (image && color) {
+    console.log("image is " + image);
     return (
       <div className="single-avatar">
         <div className="color" style={{ backgroundColor: color }}>
-          <Image src={image} alt="img" />
+          <Image src={image} alt="img" className="image" />
         </div>
       </div>
     );
