@@ -38,6 +38,15 @@ const avatars = [one, two, three, four, five, six, seven, eight, nine, ten];
 export default function LoginPopUp() {
   const [centreColor, setCentreColor] = useState(colors[0]); // the selected color
   const [selectedAvatar, setSelectedAvatar] = useState(avatars[0]); // the selected avatar
+  const [userName, setUserName] = useState(""); // the username input
+
+  const handleClick = () => {
+    console.log("clicked");
+    console.log(selectedAvatar);
+    console.log(centreColor);
+    console.log(userName);
+    setUserName("");
+  };
 
   return (
     <div className="avatar-popup show">
@@ -116,9 +125,17 @@ export default function LoginPopUp() {
           <Image src={ArrowUp} alt="" />
         </div>
         <div className="username">
-          <input type="text" required placeholder="Enter username" />
+          <input
+            type="text"
+            required
+            placeholder="Enter username"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
-        <button className="username-submit">Submit</button>
+        <button className="username-submit" onClick={handleClick}>
+          Submit
+        </button>
       </div>
     </div>
   );
